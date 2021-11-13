@@ -51,6 +51,24 @@ fn main() {
     };
 
     println!("The result is {}", result);
+
+    let mut number = 100;
+
+    while number != 0{
+        println!("{}", number);
+        number -= 1;
+    }
+    println!("LiFTOFF!!!");
+
+    let a = [1,2,3,4,5];
+
+    for element in a.iter(){
+        println!("the value is: {}", element);
+    }
+
+    for i in (1..4).rev(){
+        println!("{}", i)
+    }
 }
 
 fn another_function(mut x: i32) {

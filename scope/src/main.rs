@@ -37,6 +37,12 @@ fn main() {
     // this will work
     change(&mut s1);
     println!("{}", s1);
+
+    let string = String::from("some control");
+
+    let index = first_word(&string);
+    
+    println!("{}", index);
 }
 
 fn calculate_length(s: &String) -> usize{
@@ -49,4 +55,16 @@ fn calculate_length(s: &String) -> usize{
 
 fn change(s: &mut String){
     s.push_str(",some string");
+}
+
+fn first_word(s: &String) -> usize{
+    let bytes = s.as_bytes();
+
+    for (i, &item) in bytes.iter().enumerate(){
+        if item == b' '{
+            return i;
+        }
+    }
+
+    s.len()
 }

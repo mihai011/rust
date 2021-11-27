@@ -1,50 +1,53 @@
-mod front_of_house{
-    pub mod hosting{
-        pub fn add_to_waitlist()->u8{ 2+2 }
-        fn seat_at_table(){}
+mod front_of_house {
+    pub mod hosting {
+        pub fn add_to_waitlist() -> u8 {
+            2 + 2
+        }
+        fn seat_at_table() {}
     }
 
     pub mod serving {
-        fn take_order(){}
+        fn take_order() {}
 
-        pub fn serve_order(){ println!("Serving order")}
+        pub fn serve_order() {
+            println!("Serving order")
+        }
 
-        fn take_payment(){}
-
-        
+        fn take_payment() {}
     }
 }
 
-mod back_of_the_house{
+mod back_of_the_house {
 
-    pub struct Breakfast{
+    pub struct Breakfast {
         pub toast: String,
         seasonal_fruit: String,
     }
 
     impl Breakfast {
         pub fn summer_breakfast(toast: &str) -> Breakfast {
-            Breakfast{
+            Breakfast {
                 toast: String::from(toast),
                 seasonal_fruit: String::from("peaches"),
             }
         }
     }
 
-    fn cook_order(){
+    fn cook_order() {
         println!("'Cooking order!");
     }
 
-    pub fn fix_incorect_order(){
+    pub fn fix_incorect_order() {
         cook_order();
         super::front_of_house::serving::serve_order();
     }
-    
 }
 
-pub fn eat_at_restaurant(){
+use crate::front_of_house::hosting;
+
+pub fn eat_at_restaurant() {
     //absolute path
-    crate::front_of_house::hosting::add_to_waitlist();
+    hosting::add_to_waitlist();
 
     //relative path
     front_of_house::hosting::add_to_waitlist();
@@ -54,24 +57,26 @@ pub fn eat_at_restaurant(){
     // Change our mind about what bread we;'d like
     println!("I'd like {} toast please", meal.toast);
 
-    let test:String;
+    let test: String;
 
     // The next line won't compile if we uncomment it: we're not allowed
     // to see or modify the seasonal fruit that comes with the meal
     //meal.seasonal_fruit =  String::from("Blueberries");
 }
 
-
-mod tests{
-    use crate::{back_of_the_house::{self, Breakfast}, front_of_house};
+mod tests {
+    use crate::{
+        back_of_the_house::{self, Breakfast},
+        front_of_house,
+    };
 
     #[test]
-    fn it_works(){
+    fn it_works() {
         assert!(front_of_house::hosting::add_to_waitlist() == 4);
     }
 
     #[test]
-    fn test_incorrect_order(){
+    fn test_incorrect_order() {
         back_of_the_house::fix_incorect_order();
     }
 

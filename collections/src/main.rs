@@ -145,5 +145,40 @@ fn main() {
 
     println!("{:?}", map);
 
+    let mut v = vec![3,4,2,23,42,432,42,424,2,4,5,35,345,346,36744567];
 
+    let mut sum:i32 = 0;
+    let sum_ref = &mut sum;
+
+    for number in &v{
+        println!("{}", number);
+        *sum_ref+=number;
+    }
+
+    let vector_length = v.iter().len();
+
+    println!("Mean of the vector is {}", (sum/v.len() as i32) as f32);
+
+    v.sort();
+
+    let mid =(v.iter().count()/2) as usize;
+
+    println!("The median of the vector is {:?}", v[mid]);
+
+    let mut map = HashMap::new();
+    
+    for element in v{
+        let count = map.entry(element).or_insert(0);
+        *count += 1;
+    }
+
+    println!("{:?}", map);
+
+    let mode = map
+            .iter()
+            .max_by(|a,b| a.1.cmp(&b.1))
+            .map(|(k, _v)| k);
+
+    
+    println!("the mode for vector is {:?}", mode);
 }

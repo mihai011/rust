@@ -2,6 +2,32 @@ use std::vec;
 
 use std::collections::HashMap;
 
+fn latin_converter(word: String)->String{
+
+    let vocals = "aeiouAEIOU";
+    let vocals = String::from(vocals);
+
+    let first = word.chars().next().unwrap();
+
+    for v in vocals.chars(){
+        if first == v {
+            println!("{}-hay", word);
+            break;
+        }
+    }
+
+    let mut flag = 0;
+    for v in vocals.chars(){
+        if first == v{
+            flag = 1;
+        }
+    }
+    if flag == 0{
+        println!("{}-fay", &word[1..]);
+    }
+    word
+}
+
 fn main() {
     println!("Hello, world!");
 
@@ -181,4 +207,10 @@ fn main() {
 
     
     println!("the mode for vector is {:?}", mode);
+
+    let apple = String::from("apple");
+    let first = String::from("first");
+
+    let latin = latin_converter(apple);
+    let latin = latin_converter(first);    
 }

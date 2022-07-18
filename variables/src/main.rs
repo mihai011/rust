@@ -1,81 +1,59 @@
 fn main() {
+    // mutable variabbles
     let mut x = 5;
-    println!("The value of x is {}", x);
+    println!("The value of x is: {}", x);
     x = 6;
-    println!("The value of x is {}", x);
+    println!("The value of x is: {}", x);
 
-    let x = 5;
+    // constants
+    // dead code
+    const MAX_POINTS: u32 = 100_000;
+
+    // shadowing
+
+    let x: u8 = 100;
 
     let x = x + 1;
-    let x = x * x;
+    let x = x * 2;
 
-    println!("the value of x is: {}", x);
+    println!("The value of x is: {}", x);
 
-    let mut spaces = "   ";
+    // mutable variables are static error here
+    // let mut spaces = "  ";
     // spaces = spaces.len();
+
+    // experiment
+    // let guess: str = "42".parse().expect("Error");
+    // addition
+    let sum = 5 + 10;
+    // subtraction
+    let difference = 95.5 - 4.3;
+    // multiplication
+    let product = 4 * 30;
+    // division
+    let quotient = 56.7 / 32.2;
+    // remainder
+    let remainder = 43 % 5;
 
     let c = 'z';
     let z = 'z';
-    let heart_eyed_cat = "ㇲ";
+    let heart_eyed_cat = '😻';
     println!("{}", heart_eyed_cat);
 
-    let mut tup: (i32, f64, u8) = (23, 23.4, 8);
-    println!("{:?}", tup);
-    tup.0 = 34;
-    println!("{:?}", tup);
+    // tuples
 
-    let a = [1, 2, 3, 4, 5];
-    let first = a[0];
-    let second = a[1];
-    println!("{:?}", a);
-    let x = 12;
-    another_function(x);
-    println!("{}", x);
+    let tup: (i32, f64, u8) = (500, 6.4, 1);
+    let (x,y,z) = tup;
+    println!("{}", z);
 
-    let y = {
-        let x = 3;
-        x + 1
-    };
+    let a  = [1,2,3,4,5];
+    let index = 3;
 
-    println!("Value of y {}", y);
+    println!(" The value of element is: {}", a[index]);
 
-    println!("{}", five());
-
-    let mut counter = 0;
-
-    let result = loop {
-        counter += 1;
-        if counter == 10 {
-            break counter * 2;
-        }
-    };
-
-    println!("The result is {}", result);
-
-    let mut number = 100;
-
-    while number != 0{
-        println!("{}", number);
-        number -= 1;
-    }
-    println!("LiFTOFF!!!");
-
-    let a = [1,2,3,4,5];
-
-    for element in a.iter(){
-        println!("the value is: {}", element);
-    }
-
-    for i in (1..4).rev(){
-        println!("{}", i)
-    }
+    another_function(24);
 }
 
-fn another_function(mut x: i32) {
-    println!("Another function : {}", x);
-    x = x + 1;
-}
-
-fn five() -> i32 {
-    5
+fn another_function(x: i32){
+    println!("The value of x is: {}", x);
 }
